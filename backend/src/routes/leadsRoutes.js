@@ -11,5 +11,6 @@ router.post("/import", verifyToken, upload.single("file"), leadsController.impor
 router.get("/",verifyToken,leadsController.getLeads)
 router.get("/:id",verifyToken,leadsController.getLead)
 router.delete("/:id",verifyToken,leadsController.deleteLead)
+router.put("/:id", verifyToken, leadsController.updateLead)
 
 module.exports = router
