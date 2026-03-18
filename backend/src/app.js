@@ -1,6 +1,7 @@
 const express = require("express")
 const cors = require("cors")
 
+
 const authRoutes = require("./routes/authRoutes")
 const leadsRoutes = require("./routes/leadsRoutes")
 const campaignsRoutes = require("./routes/campaignsRoutes")
@@ -13,6 +14,7 @@ const blacklistRoutes = require("./routes/blacklistRoutes")
 const dashboardRoutes = require("./routes/dashboardRoutes")
 
 const app = express()
+app.use(express.json())
 
 app.use(cors())
 app.use(express.json())
@@ -27,5 +29,7 @@ app.use("/transfers", transfersRoutes)
 app.use("/callbacks", callbacksRoutes)
 app.use("/blacklist", blacklistRoutes)
 app.use("/dashboard", dashboardRoutes)
-
+app.get("/", (req, res) => {
+  res.send("API OK")
+})
 module.exports = app
